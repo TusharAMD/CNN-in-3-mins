@@ -120,6 +120,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import os
+from tensorflow.keras.models import load_model
 
 def predict_image(img_path):
     img = image.load_img(img_path, target_size=(img_height, img_width))
@@ -132,6 +133,10 @@ def predict_image(img_path):
     class_labels = list(train_generator.class_indices.keys())
     return class_labels[predicted_class[0]]
 
+
+
+# Load the saved model
+model = load_model("model.h5")
 
 directory = '/content/drive/MyDrive/CNN/not_to_train/'
 
@@ -211,3 +216,4 @@ plt.ylabel('True Labels')
 plt.title('Confusion Matrix')
 plt.show()
 
+print(cm)
